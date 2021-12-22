@@ -1,0 +1,24 @@
+{
+  "name": "remote-mouse",
+  "version": "0.2.0",
+  "description": "Remote control your linux desktop with your phone",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "dev": "nodemon index.ts"
+  },
+  "author": "CRBl_",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.17.12",
+    "@types/node": "^16.0.0",
+    "@types/ws": "^7.4.6",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.9",
+    "robotjs": "^0.6.0",
+    "ts-node": "^10.0.0",
+    "tsc": "^2.0.3",
+    "typescript": "^4.4.3",
+    "ws": "^7.5.1"
+  }
+}

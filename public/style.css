@@ -1,0 +1,36 @@
+body {
+    padding: 0;
+    background-color: gray;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+input {
+    width: 100%;
+    position: absolute;
+    top: -1000px;
+}
+
+button {
+    background-color: gray;
+    border: 1px solid darkgray;
+    padding: 10px;
+    outline: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.clicked {
+    background-color: darkcyan;
+}
+
+#reconnect {
+    position: absolute;
+    width: 100vw;
+    background-color: #ff6600;
+    z-index: 10;
+}

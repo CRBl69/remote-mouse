@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Gamepad</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="gamepad.css">
+</head>
+<body>
+    <button id="reconnect" class="hidden">Reconnect</button>
+    <div class="gamepad">
+        <div class="gamepad-left">
+            <button id="w">W</button>
+            <button id="e">E</button>
+            <button id="a">A</button>
+            <button id="s">S</button>
+            <button id="d">D</button>
+            <button id="esc">ESC</button>
+            <button id="ctrl">CTRL</button>
+            <button id="shift">SHIFT</button>
+            <button id="tab">TAB</button>
+        </div>
+        <div class="gamepad-right">
+            <div id="joystick-container">
+                <div id="joystick-box">
+                    <div id="joystick"></div>
+                </div>
+            </div>
+            <button id="left-click">L</button>
+            <button id="right-click">R</button>
+        </div>
+        <button id="fullscreen">F</button>
+    </div>
+</body>
+<script src="api.js"></script>
+<script src="gamepad.js"></script>
+</html>
