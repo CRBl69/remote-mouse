@@ -1,6 +1,7 @@
 class Api {
-    constructor() {
-        this.ws = new WebSocket("ws://192.168.1.208:6942");
+    constructor(wsPort) {
+        this.wsPort = wsPort;
+        this.reconnect();
     }
 
     sendKey(key) {
@@ -45,6 +46,6 @@ class Api {
     }
 
     reconnect() {
-        this.ws = new WebSocket("ws://192.168.1.208:6942");
+        this.ws = new WebSocket(`ws://${location.hostname}:${this.wsPort}`);
     }
 }

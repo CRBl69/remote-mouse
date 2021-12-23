@@ -1,11 +1,15 @@
 // The Api object used to comunicate with the server
-const api = new Api();
+let api;
+
+fetch('/ws-port').then(res => res.text()).then(res => {
+    api = new Api(res);
+
+    api.onWsClose(() => {
+        reconnect.classList.remove('hidden');
+    });
+});
 
 let reconnect = document.getElementById('reconnect');
-
-api.onWsClose(() => {
-    reconnect.classList.remove('hidden');
-});
 
 reconnect.addEventListener('click', () => {
     api.reconnect();

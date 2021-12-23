@@ -17,11 +17,15 @@ $ npm run start
 
 Then go to the `http://your-desktop-ip:8081` and you're good to go.
 
-There is a gamepad available at `http://your-desktop-ip:8081/gamepad.html`
+In order to change the port of the http/ws server, please use a `.env` file
+like the following one:
+
+```bash
+WS_PORT=6942
+HTTP_PORT=8081
+```
 
 ## Future
-
-Changing ports is not yet supported, but is comming in the near future.
 
 Some other features are planned to be implemented:
 
