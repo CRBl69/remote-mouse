@@ -68,9 +68,13 @@ let keyboard = {
     },
 }
 
+let middleclickdown = false;
+let currentOrientation = 0.0;
+
 // The mouse buttons
 let mouseButtons = {
     left: document.getElementById("left-click"),
+    middle: document.getElementById("middle-click"),
     right: document.getElementById("right-click"),
 }
 // Handlers for the mouse buttons
@@ -82,6 +86,17 @@ mouseButtons.left.ontouchend = () => {
     mouseButtons.left.classList.remove("clicked");
     api.mouseToggle('left', 'up');
 };
+mouseButtons.middle.ontouchstart = () => {
+    mouseButtons.middle.classList.add("clicked");
+    middleclickdown = true;
+    currentOrientation = undefined;
+};
+mouseButtons.middle.ontouchend = () => {
+    mouseButtons.middle.classList.remove("clicked");
+    middleclickdown = false;
+    fullscreen.innerText = `F`;
+    currentOrientation = undefined;
+};
 mouseButtons.right.ontouchstart = () => {
     mouseButtons.right.classList.add("clicked");
     api.mouseToggle('right', 'down');
@@ -90,6 +105,30 @@ mouseButtons.right.ontouchend = () => {
     mouseButtons.right.classList.remove("clicked");
     api.mouseToggle('right', 'up');
 };
+
+navigator.permissions.query({name:'geolocation'}).then(() => {
+    if(window.DeviceMotionEvent){
+        window.addEventListener('deviceorientation', e => {
+            // fullscreen.innerText = `alpha: ${Math.floor(e.alpha)}, beta: ${Math.floor(e.beta)}, gamma: ${Math.floor(e.gamma)}`
+            if(middleclickdown) {
+                if(currentOrientation == undefined) currentOrientation = e.gamma;
+                else {
+                    if(e.gamma - currentOrientation > 20) {
+                        currentOrientation += 20;
+                        fullscreen.innerText = `scrolled`;
+                        api.scroll(-10);
+                    } else if (e.gamma - currentOrientation < -20) {
+                        currentOrientation -= 20;
+                        fullscreen.innerText = `scrolled`;
+                        api.scroll(10);
+                    }
+                }
+            }
+        });
+    }else{
+        fullscreen.innerText = 'fm';
+    }
+})
 
 // Handler for the fullscreen button
 fullscreen.onclick = () => {
